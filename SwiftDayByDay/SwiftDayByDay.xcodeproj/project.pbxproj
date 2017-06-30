@@ -16,6 +16,10 @@
 		BD7F4A851F04A47900DF114E /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A841F04A47900DF114E /* Functions.swift */; };
 		BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A871F04E4B400DF114E /* Objects&Classes.swift */; };
 		BD7F4A8B1F04F7C600DF114E /* Enumerations&Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A8A1F04F7C600DF114E /* Enumerations&Structures.swift */; };
+		BD7F4A8E1F05F48900DF114E /* Protocols&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A8D1F05F48900DF114E /* Protocols&Extensions.swift */; };
+		BD7F4A911F061C6F00DF114E /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A901F061C6F00DF114E /* ErrorHandling.swift */; };
+		BD7F4A941F0635B900DF114E /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A931F0635B900DF114E /* Generics.swift */; };
+		BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A961F0652C700DF114E /* Var&Let.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		BD7F4A841F04A47900DF114E /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BD7F4A871F04E4B400DF114E /* Objects&Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Objects&Classes.swift"; sourceTree = "<group>"; };
 		BD7F4A8A1F04F7C600DF114E /* Enumerations&Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enumerations&Structures.swift"; sourceTree = "<group>"; };
+		BD7F4A8D1F05F48900DF114E /* Protocols&Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Protocols&Extensions.swift"; sourceTree = "<group>"; };
+		BD7F4A901F061C6F00DF114E /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		BD7F4A931F0635B900DF114E /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		BD7F4A961F0652C700DF114E /* Var&Let.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Var&Let.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,10 @@
 		BD7F4A6D1F04948200DF114E /* SwiftDayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				BD7F4A951F0652A900DF114E /* Variables Constant */,
+				BD7F4A921F0634B400DF114E /* Generics */,
+				BD7F4A8F1F061C5100DF114E /* Error Handling */,
+				BD7F4A8C1F05F47400DF114E /* Protocols and Extensions */,
 				BD7F4A891F04F7B300DF114E /* Enumerations and Structures */,
 				BD7F4A861F04E48E00DF114E /* Objects and Classes */,
 				BD7F4A831F04A2A600DF114E /* Functions & Closures */,
@@ -106,6 +118,38 @@
 				BD7F4A8A1F04F7C600DF114E /* Enumerations&Structures.swift */,
 			);
 			name = "Enumerations and Structures";
+			sourceTree = "<group>";
+		};
+		BD7F4A8C1F05F47400DF114E /* Protocols and Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A8D1F05F48900DF114E /* Protocols&Extensions.swift */,
+			);
+			name = "Protocols and Extensions";
+			sourceTree = "<group>";
+		};
+		BD7F4A8F1F061C5100DF114E /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A901F061C6F00DF114E /* ErrorHandling.swift */,
+			);
+			name = "Error Handling";
+			sourceTree = "<group>";
+		};
+		BD7F4A921F0634B400DF114E /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A931F0635B900DF114E /* Generics.swift */,
+			);
+			name = Generics;
+			sourceTree = "<group>";
+		};
+		BD7F4A951F0652A900DF114E /* Variables Constant */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A961F0652C700DF114E /* Var&Let.swift */,
+			);
+			name = "Variables Constant";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,10 +224,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD7F4A8E1F05F48900DF114E /* Protocols&Extensions.swift in Sources */,
 				BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */,
+				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,
 				BD7F4A711F04948200DF114E /* ViewController.swift in Sources */,
+				BD7F4A941F0635B900DF114E /* Generics.swift in Sources */,
 				BD7F4A821F049E2C00DF114E /* ControlFlow.swift in Sources */,
 				BD7F4A6F1F04948200DF114E /* AppDelegate.swift in Sources */,
+				BD7F4A911F061C6F00DF114E /* ErrorHandling.swift in Sources */,
 				BD7F4A8B1F04F7C600DF114E /* Enumerations&Structures.swift in Sources */,
 				BD7F4A851F04A47900DF114E /* Functions.swift in Sources */,
 			);
@@ -347,6 +395,7 @@
 				BD7F4A7F1F04948200DF114E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

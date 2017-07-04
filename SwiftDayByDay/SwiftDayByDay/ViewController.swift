@@ -17,7 +17,8 @@ class ViewController: UIViewController {
 //        ErrorHandling().errorHandling()
 //        VarAndConstant().varLet()
 //        Optional1().optional1()
-        StringsCharacters().strings()
+//        StringsCharacters().strings()
+        CollectionTypes().array()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

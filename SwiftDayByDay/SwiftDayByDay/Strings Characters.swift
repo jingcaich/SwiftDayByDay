@@ -103,6 +103,11 @@ class StringsCharacters {
         print(catString)
         // Prints "Cat!🐱
         // Character 类型的变量 不能 append 任何 String 或者 Character, 因为 Character 只能是单个的字符
+        let dogString = "Dog‼🐶"
+        // 可以打印 unicode 标量, 这里会将标量转化为 🐶
+        for scalar in dogString.unicodeScalars {
+            print("\(scalar) ")
+        }
         
     }
     

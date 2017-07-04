@@ -81,10 +81,10 @@ class Enum {
     func enumTest() {
         
         let ace = Rank.ace
-        let aceRawValue = ace.rawValue
+        _ = ace.rawValue
         
         let hearts = Suit.hearts
-        let heartsDescription = hearts.simpleDescription()
+        _ = hearts.simpleDescription()
         
         if let convertedRank = Rank(rawValue: 3) {
             _ = convertedRank.simpleDescription()
@@ -102,7 +102,7 @@ class Enum {
         }
         
         let threeOfSpades = Card(rank: .three, suit: .spades)
-        let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+        _ = threeOfSpades.simpleDescription()
             
     }
 }

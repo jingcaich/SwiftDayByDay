@@ -20,6 +20,9 @@
 		BD7F4A911F061C6F00DF114E /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A901F061C6F00DF114E /* ErrorHandling.swift */; };
 		BD7F4A941F0635B900DF114E /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A931F0635B900DF114E /* Generics.swift */; };
 		BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A961F0652C700DF114E /* Var&Let.swift */; };
+		BD7F4A9A1F09E07E00DF114E /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A991F09E07E00DF114E /* Optional.swift */; };
+		BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A9C1F0A2F5800DF114E /* BasicOperator.swift */; };
+		BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		BD7F4A901F061C6F00DF114E /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		BD7F4A931F0635B900DF114E /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		BD7F4A961F0652C700DF114E /* Var&Let.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Var&Let.swift"; sourceTree = "<group>"; };
+		BD7F4A991F09E07E00DF114E /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		BD7F4A9C1F0A2F5800DF114E /* BasicOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicOperator.swift; sourceTree = "<group>"; };
+		BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings Characters.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,9 @@
 		BD7F4A6D1F04948200DF114E /* SwiftDayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				BD7F4A9E1F0A37C500DF114E /* Strings and Characters */,
+				BD7F4A9B1F0A2F3700DF114E /* Basic Operator */,
+				BD7F4A981F09E06E00DF114E /* Optional */,
 				BD7F4A951F0652A900DF114E /* Variables Constant */,
 				BD7F4A921F0634B400DF114E /* Generics */,
 				BD7F4A8F1F061C5100DF114E /* Error Handling */,
@@ -152,6 +161,30 @@
 			name = "Variables Constant";
 			sourceTree = "<group>";
 		};
+		BD7F4A981F09E06E00DF114E /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A991F09E07E00DF114E /* Optional.swift */,
+			);
+			name = Optional;
+			sourceTree = "<group>";
+		};
+		BD7F4A9B1F0A2F3700DF114E /* Basic Operator */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A9C1F0A2F5800DF114E /* BasicOperator.swift */,
+			);
+			name = "Basic Operator";
+			sourceTree = "<group>";
+		};
+		BD7F4A9E1F0A37C500DF114E /* Strings and Characters */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */,
+			);
+			name = "Strings and Characters";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,8 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7F4A8E1F05F48900DF114E /* Protocols&Extensions.swift in Sources */,
+				BD7F4A9A1F09E07E00DF114E /* Optional.swift in Sources */,
+				BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */,
 				BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */,
 				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,
+				BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */,
 				BD7F4A711F04948200DF114E /* ViewController.swift in Sources */,
 				BD7F4A941F0635B900DF114E /* Generics.swift in Sources */,
 				BD7F4A821F049E2C00DF114E /* ControlFlow.swift in Sources */,

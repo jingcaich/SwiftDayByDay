@@ -14,7 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        Functions().functions();
 //        Enum().enumTest()
-        ErrorHandling().errorHandling()
+//        ErrorHandling().errorHandling()
+//        VarAndConstant().varLet()
+//        Optional1().optional1()
+        StringsCharacters().strings()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

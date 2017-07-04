@@ -28,6 +28,10 @@ enum PrinterError: Error {
 
 class ErrorHandling {
     
+    func canThrowAnError() throws {
+        // this function may or may not throw an error
+    }
+    
     // 使用 throw 关键字来抛出异, 并且用 throws 来标记这个函数能抛出异常, 如果你在函数中抛出异常, 这个函数会理解 return, 并且能捕捉到异常
     func send(job: Int, toPrinter printerName: String) throws -> String {
         if printerName == "Never Has Toner" {

@@ -101,4 +101,95 @@ class Functions {
      Third Class。该类型的值作为函数参数也不行
      */
     
+    func greetAgain(person: String) -> String {
+        return "Hello again, " + person + "!"
+    }
+    
+    func greet(person: String) -> String {
+        let greeting = "Hello, " + person + "!"
+        return greeting
+    }
+    // 函数可以同名, 但是不能连参数也相同
+    func greet(person: String, alreadyGreeted: Bool) -> String {
+        if alreadyGreeted {
+            return greetAgain(person: person)
+        } else {
+            return greet(person: person)
+        }
+    }
+    // 函数可以有默认值
+    func someFunction(argumentLabel parameterName: Int) {
+        // In the function body, parameterName refers to the argument value
+        // for that parameter.
+    }
+    
+    // Variadic Parameters (可变参数, 不多最多只能有一个这样的参数)
+    func variadic() {
+        
+        func arithmeticMean(_ numbers: Double...) -> Double {
+            var total: Double = 0
+            for number in numbers {
+                total += number
+            }
+            return total / Double(numbers.count)
+        }
+        
+        arithmeticMean(1, 2, 3, 4, 5)
+        // returns 3.0, which is the arithmetic mean of these five numbers
+        arithmeticMean(3, 8.25, 18.75)
+        // returns 10.0, which is the arithmetic mean of these three numbers
+        
+    }
+    
+    // In-Out Parameters 普遍来说函数参数都是常量, 尝试着去修改可能会引起 compile-time error
+    // 可以在前面加上 inout 来解决, 所以相对来说你就不能传常量或者字面语法的值
+    func _inout (){
+        func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+            let temporaryA = a
+            a = b
+            b = temporaryA
+        }
+        
+        var a:Int = 1
+        var b:Int = 2
+        // 会自动加上 & label
+        swapTwoInts(&a, &b)
+        
+    }
+    
+    // function type (将函数的参数、返回值数量及类型称作为一个函数的类型)
+    // 相同函数类型的函数可以赋值
+    func _functionType() {
+        
+        func addTwoInts(_ a: Int, _ b: Int) -> Int {
+            return a + b
+        }
+        func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+            return a * b
+        }
+        
+        var mathFunction: (Int, Int) -> Int = addTwoInts
+        
+        // 也可以将函数类型作为参数
+        func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+            print("Result: \(mathFunction(a, b))")
+        }
+        printMathResult(addTwoInts, 3, 5)
+        
+        func stepForward(_ input: Int) -> Int {
+            return input + 1
+        }
+        
+        func stepBackward(_ input: Int) -> Int {
+            return input - 1
+        }
+        // 可以作为返回值
+        func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+            return backward ? stepBackward : stepForward
+        }
+        
+        
+    }
+    
+    
 }

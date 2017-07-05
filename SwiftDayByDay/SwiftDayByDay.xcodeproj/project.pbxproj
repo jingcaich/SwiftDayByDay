@@ -24,6 +24,7 @@
 		BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A9C1F0A2F5800DF114E /* BasicOperator.swift */; };
 		BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */; };
 		BD7F4AA31F0B33C000DF114E /* Collection Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA21F0B33C000DF114E /* Collection Type.swift */; };
+		BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA51F0CDF4900DF114E /* Closures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		BD7F4A9C1F0A2F5800DF114E /* BasicOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicOperator.swift; sourceTree = "<group>"; };
 		BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings Characters.swift"; sourceTree = "<group>"; };
 		BD7F4AA21F0B33C000DF114E /* Collection Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection Type.swift"; sourceTree = "<group>"; };
+		BD7F4AA51F0CDF4900DF114E /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,18 +80,19 @@
 		BD7F4A6D1F04948200DF114E /* SwiftDayByDay */ = {
 			isa = PBXGroup;
 			children = (
-				BD7F4AA11F0B33AB00DF114E /* Collection Types */,
-				BD7F4A9E1F0A37C500DF114E /* Strings and Characters */,
 				BD7F4A9B1F0A2F3700DF114E /* Basic Operator */,
-				BD7F4A981F09E06E00DF114E /* Optional */,
-				BD7F4A951F0652A900DF114E /* Variables Constant */,
-				BD7F4A921F0634B400DF114E /* Generics */,
-				BD7F4A8F1F061C5100DF114E /* Error Handling */,
-				BD7F4A8C1F05F47400DF114E /* Protocols and Extensions */,
-				BD7F4A891F04F7B300DF114E /* Enumerations and Structures */,
-				BD7F4A861F04E48E00DF114E /* Objects and Classes */,
-				BD7F4A831F04A2A600DF114E /* Functions & Closures */,
+				BD7F4AA41F0CDF3000DF114E /* Closures */,
 				BD7F4A801F049C1700DF114E /* Control Flow */,
+				BD7F4AA11F0B33AB00DF114E /* Collection Types */,
+				BD7F4A8F1F061C5100DF114E /* Error Handling */,
+				BD7F4A891F04F7B300DF114E /* Enumerations and Structures */,
+				BD7F4A831F04A2A600DF114E /* Functions & Closures */,
+				BD7F4A921F0634B400DF114E /* Generics */,
+				BD7F4A861F04E48E00DF114E /* Objects and Classes */,
+				BD7F4A981F09E06E00DF114E /* Optional */,
+				BD7F4A8C1F05F47400DF114E /* Protocols and Extensions */,
+				BD7F4A9E1F0A37C500DF114E /* Strings and Characters */,
+				BD7F4A951F0652A900DF114E /* Variables Constant */,
 				BD7F4A6E1F04948200DF114E /* AppDelegate.swift */,
 				BD7F4A701F04948200DF114E /* ViewController.swift */,
 				BD7F4A721F04948200DF114E /* Main.storyboard */,
@@ -196,6 +199,14 @@
 			name = "Collection Types";
 			sourceTree = "<group>";
 		};
+		BD7F4AA41F0CDF3000DF114E /* Closures */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4AA51F0CDF4900DF114E /* Closures.swift */,
+			);
+			name = Closures;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -270,6 +281,7 @@
 			files = (
 				BD7F4A8E1F05F48900DF114E /* Protocols&Extensions.swift in Sources */,
 				BD7F4A9A1F09E07E00DF114E /* Optional.swift in Sources */,
+				BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */,
 				BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */,
 				BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */,
 				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,

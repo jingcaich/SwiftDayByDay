@@ -18,7 +18,9 @@ class ViewController: UIViewController {
 //        VarAndConstant().varLet()
 //        Optional1().optional1()
 //        StringsCharacters().strings()
-        CollectionTypes().array()
+//        CollectionTypes().array()
+//        ControlFlow()._switch()
+        ControlFlow()._guard()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

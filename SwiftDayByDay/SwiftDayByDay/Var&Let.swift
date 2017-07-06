@@ -14,6 +14,7 @@ class VarAndConstant {
     func varLet () {
         // 如果一定要使用 系统关键字作为变量名, 用 ``
         let `var`:String = ""
+        print(`var`)
         
 //        “For hexadecimal numbers with an exponent of exp, the base number is multiplied by 2exp:
 //        0xFp2 means 15 x 22, or 60.0.

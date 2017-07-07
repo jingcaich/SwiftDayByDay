@@ -72,8 +72,10 @@ class Closures{
             // trailing closure's body goes here
         }
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+        
         // 所以这里我们也可以使用尾闭包来进行 sort 操作
         var reversedNames = names.sorted() {$0 > $1}
+        
         // 1. 如果一个闭包表达式被提供了仅仅一个参数且是你传参数的时候给的是尾闭包, 这个时候你甚至可以去除 ()
         reversedNames = names.sorted {$0 > $1}
         // 2.
@@ -99,12 +101,14 @@ class Closures{
         
     }
     
+    var completionHandlers: [() -> Void] = []
+
     // Capturing Values 能捕获到上下文的变量和常量
     func _capturingValues() {
         
         func makeIncrementer(forIncrement amount: Int) -> () -> Int {
             var runningTotal = 0
-            // amount 与 runningTotal 会 incrementer 被引用, 保证不会消失
+            // amount 与 runningTotal 会 incrementer 被引用, 保证其不会消失
             func incrementer() -> Int {
                 runningTotal += amount
                 return runningTotal
@@ -112,11 +116,109 @@ class Closures{
             return incrementer
         }
         
+        // 1. 作为优化, Swift 在闭包内没有改变外面的变量, 会采取拷贝对应值来代替捕获对应的变量
+        let incrementByTen = makeIncrementer(forIncrement: 10)
+        incrementByTen()
+        // returns a value of 10
         
-    }
+        incrementByTen()
+        // returns a value of 20
+        
+        incrementByTen()
+        // returns a value of 30
+        
+//        If you create a second incrementer, it will have its own stored reference to a new, separate runningTotal variable:
+        // 再创建另外一个常量, 他将会引用自己的新的 runningTotal 变量
+        let incrementBySeven = makeIncrementer(forIncrement: 7)
+        incrementBySeven()
+        // returns a value of 7
+        incrementByTen()
+        // returns a value of 40
+        
+        // 2. 闭包是引用类型, 类似上面的 incrementByTen
+        
+        // 3. Escaping Closures (逃离闭包)
+        // 如果闭包作为参数传递给某个函数, 你可以在参数类型前加上 @escaping 表明该闭包可以逃离
+        // 其中一种作用是闭包一直被存在函数外部的变量中, 作为例子, 许多函数会用闭包来作为同步操作的 completion handler. 
+        // 闭包需要 escaping
+        func someFunctionWithEscapingClosure(completionHandler:  @escaping () -> Void) {
+            completionHandlers.append(completionHandler)
+        }
+        someFunctionWithEscapingClosure { 
+            print("Doing something");
+        }
+        
+        // 4. 加了 @escaping 之后意味着在使用属性时必须显示加上 self
+        func someFunctionWithNonescapingClosure(closure: () -> Void) {
+            closure()
+        }
+        
+        func doSomething() {
+            someFunctionWithEscapingClosure { self.x = 100 }
+            someFunctionWithNonescapingClosure { x = 200 }
+        }
+        
+        doSomething()
+        print(x)
+        // Prints "200"
+        
+        completionHandlers.first?()
+        print(x)
+        // Prints "100
+        
+        // 5. Autoclosures (被自动创建来封装被以参数传递给某个函数的表达式, 不需要参数. 当被调用的时候, 会返回内部表达式的值)
+        var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+        print(customersInLine.count)
+        // Prints "5"
+        
+        let customerProvider = { customersInLine.remove(at: 0) }
+        print(customersInLine.count)
+        // Prints "5"
+        
+        print("Now serving \(customerProvider())!")
+        // Prints "Now serving Chris!"
+        print(customersInLine.count)
+        // Prints "4”
+        
+        func serve(customer customerProvider: () -> String) {
+            print("Now serving \(customerProvider())!")
+        }
+        
+        serve(customer: { customersInLine.remove(at: 0) } )
+        
+        // customersInLine is ["Ewa", "Barry", "Daniella"]
+        func serve1(customer customerProvider: @autoclosure () -> String) {
+            print("Now serving \(customerProvider())!")
+        }
+        // 这里所有返回 String 的表达式都会被自动转换成闭包
+        serve1(customer: customersInLine.remove(at: 0))
+        serve1(customer: "123")
+        // Prints "Now serving Ewa!"
+        
+        // 过度使用 autoclosures 会造成代码的可读性降低
+        // 可以同时使用 @escaping 和 @autoclosure
+        // customersInLine is ["Barry", "Daniella"]
+        var customerProviders: [() -> String] = []
+        func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> String) {
+            customerProviders.append(customerProvider)
+        }
+        collectCustomerProviders(customersInLine.remove(at: 0))
+        collectCustomerProviders(customersInLine.remove(at: 0))
+        
+        print("Collected \(customerProviders.count) closures.")
+        // Prints "Collected 2 closures."
+        for customerProvider in customerProviders {
+            print("Now serving \(customerProvider())!")
+        }
+        // Prints "Now serving Barry!"
+        // Prints "Now serving Daniella!
+        
+        }
+    
+    
+    var x = 10
+    
 }
-
-
 
 
 

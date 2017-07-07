@@ -11,7 +11,8 @@ import UIKit
 
 enum Rank: Int {
     // 定义多个 case, 也可以是中文
-    case ace = 1 // 默认是 0开始
+    case ace = 1 // 默认0
+    // 各个 case 之间可以使用 ',' 进行分割
     case two, three, four, five, six, seven, eight, nine, ten
     case jack, queen, king, 你不懂我的心
     func simpleDescription() -> String {
@@ -32,7 +33,7 @@ enum Rank: Int {
         }
     }
 }
-
+// 不是隐式从 0, 1, 2, 3 开始的, 没有生命是否是 Int 类型
 enum Suit {
     case spades, hearts, diamonds, clubs
     func simpleDescription() -> String {
@@ -77,6 +78,31 @@ struct Card {
     
 }
 
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+
+
+// north 的隐式值为 "north"
+enum CompassPoint: String {
+    case north, south, east, west
+}
+
+
+enum ASCIIControlCharacter: Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+
+// 递归枚举, 递归的 case 前面必须加上 indirect, 或者在枚举名字上加上 indirect 
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+
 class Enum {
     func enumTest() {
         
@@ -91,18 +117,52 @@ class Enum {
         }
         print(Rank.ten.rawValue)
         
-        
-        
         switch success {
-            // 此类型的 case 前面需要加 let
+            // 1. 此类型的 case 前面需要加 let
             case let .result(sunrise, sunset):
                 print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
-            case let .failure(message):
+            // 2. 或者去掉前面的 let, 给参数加上 let
+            // 很明显 第一种在处理大量参数时有压倒性优势
+            case .failure(let message):
                 print("Failure...  \(message)")
         }
         
         let threeOfSpades = Card(rank: .three, suit: .spades)
         _ = threeOfSpades.simpleDescription()
-            
+        // 根据 rowValue 取得对应的 case, 不存在的 rowValue 则返回 nil
+        let possiblePlanet = Planet(rawValue: 11)
+//        possiblePlanet 是 Planet? or Oprional Planet
+        // 1. 递归枚举
+        
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,6 +25,7 @@
 		BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */; };
 		BD7F4AA31F0B33C000DF114E /* Collection Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA21F0B33C000DF114E /* Collection Type.swift */; };
 		BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA51F0CDF4900DF114E /* Closures.swift */; };
+		BD7F4AAF1F13926E00DF114E /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AAE1F13926E00DF114E /* Method.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BD7F4A9F1F0A37D800DF114E /* Strings Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings Characters.swift"; sourceTree = "<group>"; };
 		BD7F4AA21F0B33C000DF114E /* Collection Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection Type.swift"; sourceTree = "<group>"; };
 		BD7F4AA51F0CDF4900DF114E /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
+		BD7F4AAE1F13926E00DF114E /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				BD7F4A891F04F7B300DF114E /* Enumerations and Structures */,
 				BD7F4A831F04A2A600DF114E /* Functions & Closures */,
 				BD7F4A921F0634B400DF114E /* Generics */,
+				BD7F4AAD1F13924C00DF114E /* Method */,
 				BD7F4A861F04E48E00DF114E /* Objects and Classes */,
 				BD7F4A981F09E06E00DF114E /* Optional */,
 				BD7F4A8C1F05F47400DF114E /* Protocols and Extensions */,
@@ -207,6 +210,14 @@
 			name = Closures;
 			sourceTree = "<group>";
 		};
+		BD7F4AAD1F13924C00DF114E /* Method */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4AAE1F13926E00DF114E /* Method.swift */,
+			);
+			name = Method;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -287,6 +298,7 @@
 				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,
 				BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */,
 				BD7F4A711F04948200DF114E /* ViewController.swift in Sources */,
+				BD7F4AAF1F13926E00DF114E /* Method.swift in Sources */,
 				BD7F4A941F0635B900DF114E /* Generics.swift in Sources */,
 				BD7F4A821F049E2C00DF114E /* ControlFlow.swift in Sources */,
 				BD7F4A6F1F04948200DF114E /* AppDelegate.swift in Sources */,

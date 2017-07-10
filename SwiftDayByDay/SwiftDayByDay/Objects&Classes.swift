@@ -26,6 +26,45 @@ import Foundation
 // 8. Swift 中的 lazy loading properties (非线程安全)
 // 9. Stored Properties and Instance Variables (被储存的属性 和 实例变量), Swift 只有一种方式(这段翻译起来不通)
 // 10. Computed Properties (Getter & Setter)
+// 10.1 read-only 只实现 getter 方法即为 read-only 属性 (只能使用 var 关键字进行定义)
+// Property Observers(属性观察) (懒加载属性不能使用属性观察, 主要关键字是 willSet 和 didSet, 即使连续赋同一个值也是会调用的)
+// 当我们传递属性 (Property Observers) 给函数的 in-out 类型的参数时, willSet 和 didSet 会被调用, 因为 in-out 参数会被 copy-in copy-out, 在函数结束后总是会被写回给属性
+// 全局的变量实际上就是懒加载属性, 不需要 lazy 修饰符
+
+class StepCounter {
+    
+    var totalSteps: Int = 0 {
+        // 自定义的值 newTotalSteps
+        willSet(newTotalSteps) {
+            print("About to set totalSteps to \(newTotalSteps)")
+        }
+        didSet {
+            // 隐式有 oldValue, 默认
+            if totalSteps > oldValue  {
+                print("Added \(totalSteps - oldValue) steps")
+            }
+        }
+    }
+    
+    func step() {
+        
+        let stepCounter = StepCounter()
+        stepCounter.totalSteps = 200
+        // About to set totalSteps to 200
+        // Added 200 steps
+        stepCounter.totalSteps = 360
+        // About to set totalSteps to 360
+        // Added 160 steps
+        stepCounter.totalSteps = 896
+        // About to set totalSteps to 896
+        // Added 536 steps
+        
+    }
+}
+
+// 11. 全局和局部变量 
+// 全局变量和局部变量也支持 (Property Observers)
+
 struct Point {
     var x = 0.0, y = 0.0
 }
@@ -57,6 +96,32 @@ class Comp {
         // Prints "square.origin is now at (10.0, 10.0)
     }
 }
+
+// 12. Type Properties (类型属性) 类似 static var a:Int , 不过需要给一个默认值
+struct SomeStructure {
+    static var storedTypeProperty = "Some value."
+    // read-only
+    static var computedTypeProperty: Int {
+        return 1
+    }
+}
+enum SomeEnumeration {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 6
+    }
+}
+class SomeClass {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 27
+    }
+    // 可以使用 class 关键字进行代替, 方便子类继承
+    class var overrideableComputedTypeProperty: Int {
+        return 107
+    }
+}
+
 
 // 10.1 Shorthand Setter Declaration (Setter中隐式值 newValue)
 struct AlternativeRect {
@@ -190,6 +255,25 @@ class TriangleAndSquare {
         triangle = EquilateralTriangle(sideLength: size, name: name)
     }
 }
+// 13. Querying and Setting Type Properties (查找和设置类型属性)
+struct AudioChannel {
+    static let thresholdLevel = 10
+    static var maxInputLevelForAllChannels = 0
+    var currentLevel: Int = 0 {
+        didSet {
+            print("didSet")
+            if currentLevel > AudioChannel.thresholdLevel {
+                // cap the new audio level to the threshold level
+                currentLevel = AudioChannel.thresholdLevel
+            }
+            if currentLevel > AudioChannel.maxInputLevelForAllChannels {
+                // store this as the new overall maximum input level
+                AudioChannel.maxInputLevelForAllChannels = currentLevel
+            }
+        }
+    }
+}
+
 
 class  ObjectsAndClasses{
     
@@ -207,6 +291,19 @@ class  ObjectsAndClasses{
         print(triangle.perimeter)
         triangle.perimeter = 9.9
         print(triangle.sideLength)
+        
+        // 13. Querying and Setting Type Properties (查找和设置类型属性)
+        // 通过点语法
+        print(SomeStructure.storedTypeProperty)
+        // Prints "Some value."
+        SomeStructure.storedTypeProperty = "Another value."
+        print(SomeStructure.storedTypeProperty)
+        // Prints "Another value."
+        print(SomeEnumeration.computedTypeProperty)
+        // Prints "6"
+        print(SomeClass.computedTypeProperty)
+        // Prints "27”
+        
         
     }
     // 析构

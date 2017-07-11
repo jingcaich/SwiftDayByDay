@@ -26,6 +26,7 @@
 		BD7F4AA31F0B33C000DF114E /* Collection Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA21F0B33C000DF114E /* Collection Type.swift */; };
 		BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA51F0CDF4900DF114E /* Closures.swift */; };
 		BD7F4AAF1F13926E00DF114E /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AAE1F13926E00DF114E /* Method.swift */; };
+		BD7F4AB21F14B9CA00DF114E /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AB11F14B9CA00DF114E /* Subscript.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		BD7F4AA21F0B33C000DF114E /* Collection Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection Type.swift"; sourceTree = "<group>"; };
 		BD7F4AA51F0CDF4900DF114E /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		BD7F4AAE1F13926E00DF114E /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		BD7F4AB11F14B9CA00DF114E /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		BD7F4A6D1F04948200DF114E /* SwiftDayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				BD7F4AB01F14B9B000DF114E /* Subscript */,
 				BD7F4A9B1F0A2F3700DF114E /* Basic Operator */,
 				BD7F4AA41F0CDF3000DF114E /* Closures */,
 				BD7F4A801F049C1700DF114E /* Control Flow */,
@@ -218,6 +221,14 @@
 			name = Method;
 			sourceTree = "<group>";
 		};
+		BD7F4AB01F14B9B000DF114E /* Subscript */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4AB11F14B9CA00DF114E /* Subscript.swift */,
+			);
+			name = Subscript;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +305,7 @@
 				BD7F4A9A1F09E07E00DF114E /* Optional.swift in Sources */,
 				BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */,
 				BD7F4AA01F0A37D800DF114E /* Strings Characters.swift in Sources */,
+				BD7F4AB21F14B9CA00DF114E /* Subscript.swift in Sources */,
 				BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */,
 				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,
 				BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */,

@@ -27,6 +27,8 @@
 		BD7F4AA61F0CDF4900DF114E /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AA51F0CDF4900DF114E /* Closures.swift */; };
 		BD7F4AAF1F13926E00DF114E /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AAE1F13926E00DF114E /* Method.swift */; };
 		BD7F4AB21F14B9CA00DF114E /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AB11F14B9CA00DF114E /* Subscript.swift */; };
+		BD7F4AB51F15EF1200DF114E /* Inheritance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AB41F15EF1200DF114E /* Inheritance.swift */; };
+		BD7F4AB81F15F9E400DF114E /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F4AB71F15F9E400DF114E /* Initialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		BD7F4AA51F0CDF4900DF114E /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		BD7F4AAE1F13926E00DF114E /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		BD7F4AB11F14B9CA00DF114E /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
+		BD7F4AB41F15EF1200DF114E /* Inheritance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inheritance.swift; sourceTree = "<group>"; };
+		BD7F4AB71F15F9E400DF114E /* Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initialization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 		BD7F4A6D1F04948200DF114E /* SwiftDayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				BD7F4AB61F15F9C400DF114E /* Initialzation */,
+				BD7F4AB31F15EF0300DF114E /* Inheritance */,
 				BD7F4AB01F14B9B000DF114E /* Subscript */,
 				BD7F4A9B1F0A2F3700DF114E /* Basic Operator */,
 				BD7F4AA41F0CDF3000DF114E /* Closures */,
@@ -229,6 +235,22 @@
 			name = Subscript;
 			sourceTree = "<group>";
 		};
+		BD7F4AB31F15EF0300DF114E /* Inheritance */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4AB41F15EF1200DF114E /* Inheritance.swift */,
+			);
+			name = Inheritance;
+			sourceTree = "<group>";
+		};
+		BD7F4AB61F15F9C400DF114E /* Initialzation */ = {
+			isa = PBXGroup;
+			children = (
+				BD7F4AB71F15F9E400DF114E /* Initialization.swift */,
+			);
+			name = Initialzation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,6 +330,8 @@
 				BD7F4AB21F14B9CA00DF114E /* Subscript.swift in Sources */,
 				BD7F4A881F04E4B400DF114E /* Objects&Classes.swift in Sources */,
 				BD7F4A971F0652C700DF114E /* Var&Let.swift in Sources */,
+				BD7F4AB81F15F9E400DF114E /* Initialization.swift in Sources */,
+				BD7F4AB51F15EF1200DF114E /* Inheritance.swift in Sources */,
 				BD7F4A9D1F0A2F5800DF114E /* BasicOperator.swift in Sources */,
 				BD7F4A711F04948200DF114E /* ViewController.swift in Sources */,
 				BD7F4AAF1F13926E00DF114E /* Method.swift in Sources */,

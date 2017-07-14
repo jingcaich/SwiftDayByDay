@@ -51,6 +51,28 @@ class Initialization {
 //        let a = Rect(
         // centerRect's origin is (2.5, 2.5) and its size is (3.0, 3.0)
         
+        // MARK: 5.3
+        let vehicle = Vehicle()
+        print("Vehicle: \(vehicle.description)")
+        let bicycle = _Bicycle()
+        print("Bicycle: \(bicycle.description)")
+        // Bicycle: 2 wheel(s)
+        
+        // MARK: 5.5
+        let namedMeat = Food(name: "Bacon")
+        // namedMeat's name is "Bacon
+        let mysteryMeat = Food()
+        // mysteryMeat's name is "[Unnamed]
+        // 以下三种方法都可以创建 RecipeIngredient 实例
+        let oneMysteryItem = RecipeIngredient()
+        let oneBacon = RecipeIngredient(name: "Bacon")
+        let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+        // 也可以以三种方式进行初始化
+        let list = _ShoppingListItem()
+        let list1 = _ShoppingListItem(name: "123", quantity: 1)
+        let list2 = _ShoppingListItem(name: "333")
+        
+        
         
     }
     
@@ -202,9 +224,90 @@ struct _Rect {
 //A simple way to remember this is:
 //
 //Designated initializers must always delegate up.
-//Convenience initializers must always delegate across.”
+//Convenience initializers must always delegate across.
+// 5.2 Two-Phase Initialization 两相初始化 (暂时理解为两个阶段吧)
+// 安全检查1
+// 一个指定的初始化器必须保证所有被引进的属性在超类初始化之前被初始化
+// 安全检查2
+// 置顶的初始化器在初始化重载的属性前必须调用超类的初始化器
+// 安全检查3
+// 简便初始化器必须在给任何属性赋值之前调用其他初始化器
+// 安全检查4
+// 一个初始化器不能调用任何的实例方法和读任何实例属性的值,或者在第一 阶段之后给self 赋值
+// Phase1 (阶段1)
+//A designated or convenience initializer is called on a class.
+// * 初始化器被类调用
+//Memory for a new instance of that class is allocated. The memory is not yet initialized.
+// * 为新实例分配了内存, 但是内存没有初始化
+//A designated initializer for that class confirms that all stored properties introduced by that class have a value. The memory for these stored properties is now initialized.
+// * 类的指定初始化器确认所有被储存属性都会有值, 这些被储存的属性正式被初始化
+//The designated initializer hands off to a superclass initializer to perform the same task for its own stored properties.
+// * 指定初始化器调用父类的初始化器去执行它自己同样的被储存的属性的任务,
+//This continues up the class inheritance chain until the top of the chain is reached.
+// * 会继续执行直到继承链的顶端
+//Once the top of the chain is reached, and the final class in the chain has ensured that all of its stored properties have a value, the instance’s memory is considered to be fully initialized, and phase 1 is complete.
+// * 一旦到了继承链的顶端, 并且最后的类保证所有被储存的属性都有值, 这个实例才会被认为彻底的初始化了, 第一阶段完毕
 
+// Phase 2 (阶段2)
+//Working back down from the top of the chain, each designated initializer in the chain has the option to customize the instance further. Initializers are now able to access self and can modify its properties, call its instance methods, and so on.
+// *从继承链的顶端开始工作回来, 每个指定的初始化器在继承链中都可以在以后自定义初始化, 初始化器现在可以去访问 self 和修改其他属性并能调用实例方法
+//Finally, any convenience initializers in the chain have the option to customize the instance and to work with self.
+// * 最终任何在继承链中的简便初始化器都能取自定义实例与 self 一起工作
 
+// 5.3 Initializer Inheritance and Overriding (初始化器与重载)
+// NOTE: 总是在重载父类的初始化器时加上 override 修饰符, 即使子类声明的是一个简便初始化器
+
+class _Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheel(s)"
+    }
+}
+
+class _Bicycle: _Vehicle {
+    // 重载父类的制定初始化器 使用 override 修饰符
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
+
+// 5.4 自动初始化继承
+// 接上文, 子类默认不会自动继承父类的初始化器
+// 1. 你的子类没有任何指定的初始化器
+// 2. 如果你的子类实现了所有父类的制定初始化器, 通过集成他们, 或者提供一个自定义的实现作为其定义的一部分，然后它会自动继承父类的简便初始化器
+
+// 5.5 Designated and Convenience Initializers in Action
+
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+
+class _ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✔" : " ✘"
+        return output
+    }
+}
 
 
 

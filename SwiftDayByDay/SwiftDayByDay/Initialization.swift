@@ -308,20 +308,199 @@ class _ShoppingListItem: RecipeIngredient {
         return output
     }
 }
+// 5.6 Failable Initializers (可失败的初始化器)
+// 初始化的时候使用 init? 关键字
 
 
+struct Animal {
+    let species: String
+    init?(species: String) {
+        // 可以失败
+        if species.isEmpty { return nil }
+        self.species = species
+    }
+}
 
+class _FailabelInitializers {
+    
+    func failable(){
+        
+        let wholeNumber: Double = 12345.0
+        let pi = 3.14159
+        
+        if let valueMaintained = Int(exactly: wholeNumber) {
+            print("\(wholeNumber) conversion to int maintains value")
+        }
+        // Prints "12345.0 conversion to int maintains value"
+        
+        let valueChanged = Int(exactly: pi)
+        // valueChanged is of type Int?, not Int
+        
+        if valueChanged == nil {
+            print("\(pi) conversion to int does not maintain value")
+        }
+        func animal(){
+            let someCreature = Animal(species: "Giraffe")
+            // someCreature is of type Animal?, not Animal
+            
+            if let giraffe = someCreature {
+                print("An animal was initialized with a species of \(giraffe.species)")
+            }
+            
+        }
+        
+        // 创建可失败的枚举
+        let fahrenheitUnit = TemperatureUnit(symbol: "F")
+        if fahrenheitUnit != nil {
+            print("This is a defined temperature unit, so initialization succeeded.")
+        }
+        // Prints "This is a defined temperature unit, so initialization succeeded."
+        
+        let unknownUnit = TemperatureUnit(symbol: "X")
+        if unknownUnit == nil {
+            print("This is not a defined temperature unit, so initialization failed.")
+        }
+        // Prints "This is not a defined temperature unit, so initialization failed”
+        
+        // 可失败的枚举 rowValue
+        
+        let fahrenheitUnit1 = TemperatureUnit1(rawValue: "F")
+        if fahrenheitUnit1 != nil {
+            print("This is a defined temperature unit, so initialization succeeded.")
+        }
+        // Prints "This is a defined temperature unit, so initialization succeeded."
+        
+        // 对于不存在的 raw value 也会返回 nil 即使并没有显示设置对应的 case
+        let unknownUnit1 = TemperatureUnit1(rawValue: "X")
+        if unknownUnit1 == nil {
+            print("This is not a defined temperature unit, so initialization failed.")
+        }
+        // Prints "This is not a defined temperature unit, so initialization failed.”
+    }
+    
+}
 
+//Failable Initializers for Enumerations
+// 也可以返回可失败的枚举
+enum TemperatureUnit {
+    case kelvin, celsius, fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case "K":
+            self = .kelvin
+        case "C":
+            self = .celsius
+        case "F":
+            self = .fahrenheit
+        default:
+            return nil
+        }
+    }
+}
 
+enum TemperatureUnit1: Character {
+    case kelvin = "K", celsius = "C", fahrenheit = "F"
+}
 
+// Propagation of Initialization Failure
+// 我们的初始化器内部可能是代理了其他的初始化器来进行初始化, 所以也可能代理了可失败的初始化器或者不可失败的初始化器
 
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
 
+class CartItem: Product {
+    let quantity: Int
+    // 必须 quantity 和 name valid
+    init?(name: String, quantity: Int) {
+        if quantity < 1 { return nil }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
 
+//Overriding a Failable Initializer
+// 我们可以重载某个可失败的初始化器
 
+class Document {
+    var name: String?
+    // this initializer creates a document with a nil name value
+    init() {}
+    // this initializer creates a document with a nonempty name value
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
 
+class AutomaticallyNamedDocument: Document {
+    override init() {
+        super.init()
+        self.name = "[Untitled]"
+    }
+    // 用 不可失败初始化 方法重载基类的 failable 方法
+    override init(name: String) {
+        super.init()
+        if name.isEmpty {
+            self.name = "[Untitled]"
+        } else {
+            self.name = name
+        }
+    }
+}
 
+// 你也可以使用强制解包来调用父类的 failable 初始化器来作为自己的 nonfailable 初始化器
+class UntitledDocument: Document {
+    override init() {
+        super.init(name: "[Untitled]")!
+    }
+}
 
+//The init! Failable Initializer
+// 强制解包的 failable 初始化器
 
+// Required Initializer
+// 1. 加上 required 关键字, 之后每个子类必须实现这个初始化器
+// 2. 子类在实现基类的 required 方法时, 不要写 Override 关键字
+
+// Setting a Default Property Value with a Closure or Function
+// 使用闭包或者方法设置属性的默认值
+
+class _SomeClass {
+    let someProperty: Int = {
+        // create a default value for someProperty inside this closure
+        // 闭包中可以创建对应的值
+        // someValue must be of the same type as SomeType
+        // 返回值必须和属性的类型相同
+        
+        return 2
+    }() // 这里括号告诉 swift 立即去执行这个闭包
+}
+
+// 要注意的是使用闭包进行属性初始化, 实例还有没有进行初始化, 并且也不能隐式使用 self property 或者调用其他的实例方法
+
+struct Chessboard {
+    // boardColors 这个数组属性就是使用 闭包方法啊进行默认赋值的 (似乎使用懒加载会比较好一点)
+    let boardColors: [Bool] = {
+        var temporaryBoard = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                temporaryBoard.append(isBlack)
+                isBlack = !isBlack
+            }
+            isBlack = !isBlack
+        }
+        return temporaryBoard
+    }()
+    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+        return boardColors[(row * 8) + column]
+    }
+}
 
 
 
